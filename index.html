@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cẩm Nang Kỹ Thuật Tháp Giải Nhiệt Nước | Công Nghiệp Tốt</title>
+    <meta name="description" content="Tổng hợp 30 chuyên đề chuyên sâu về cấu tạo, nguyên lý hoạt động, bảo trì, tính toán lưu lượng và giải pháp tháp giải nhiệt nước công nghiệp chuẩn quốc tế.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0ea5e9;
+            --bg-page: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+            --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 4rem 1.5rem 3rem;
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
+        }
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .brand-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #93c5fd;
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.05em;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            font-size: 1.125rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        .featured-banner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .btn-target {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.85rem 1.75rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+        }
+        .btn-target:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .btn-sub {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 0.85rem 1.75rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
+        }
+        .btn-sub:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+        main {
+            max-width: 1200px;
+            margin: -2rem auto 4rem;
+            padding: 0 1.5rem;
+        }
+        .stats-bar {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 2.5rem;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-num {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.75rem;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: #93c5fd;
+        }
+        .card-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+        .card h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.85rem;
+        }
+        .card h2 a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .card h2 a:hover {
+            color: var(--primary);
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+        .card-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+        .read-more {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: gap 0.2s;
+        }
+        .read-more:hover {
+            gap: 0.5rem;
+        }
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid #334155;
+            font-size: 0.95rem;
+        }
+        footer a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.85rem; }
+            .grid { grid-template-columns: 1fr; }
+            .stats-bar { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <span class="brand-badge">KHO TRI THỨC KỸ THUẬT LÀM MÁT CÔNG NGHIỆP</span>
+            <h1>Cẩm Nang Kỹ Thuật Tháp Giải Nhiệt Nước</h1>
+            <p>Trang bị trọn bộ 30 tài liệu kỹ thuật chuyên sâu về cấu tạo, nguyên lý, tính toán công suất RT, bảo dưỡng và tối ưu hoá hệ thống tháp giải nhiệt cho các nhà xưởng công nghiệp tại Việt Nam.</p>
+            <div class="featured-banner">
+                <a class="btn-target" href="https://congnghieptot.vn/thap-giai-nhiet" rel="dofollow" title="Xem danh mục tháp giải nhiệt nước công nghiệp">
+                    🏢 Xem Bảng Giá Tháp Giải Nhiệt Chính Hãng
+                </a>
+                <a class="btn-sub" href="https://congnghieptot.vn/" rel="dofollow" title="Trang chủ Công Nghiệp Tốt">
+                    🌐 Ghé Thăm Công Nghiệp Tốt
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-num">30</div>
+                <div class="stat-label">Chuyên Đề Kỹ Thuật</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Tiêu Chuẩn Thực Tế</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">DA 96</div>
+                <div class="stat-label">GitHub Pages Authority</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">24/7</div>
+                <div class="stat-label">Hỗ Trợ Kỹ Thuật CNT</div>
+            </div>
+        </div>
+
+        <div class="grid">
+            
+    <article class="card">
+        <div class="card-badge">Chuyên mục #01</div>
+        <h2><a href="thap-giai-nhiet-nuoc-la-gi-vi-sao-nha-xuong-can-trang-bi.html">Tháp Giải Nhiệt Nước Là Gì? Vì Sao Nhà Xưởng Cần Trang Bị?</a></h2>
+        <p>Trong các nhà xưởng sản xuất hiện đại, lượng nhiệt sinh ra từ máy móc hoạt động liên tục là nguyên nhân chính dẫn đến giảm tuổi thọ thiết bị, tiêu tốn điện năng...</p>
+        <div class="card-footer">
+            <a class="read-more" href="thap-giai-nhiet-nuoc-la-gi-vi-sao-nha-xuong-can-trang-bi.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #02</div>
+        <h2><a href="nguyen-ly-van-hanh-cua-thap-giai-nhiet-nuoc-tuan-hoan.html">Nguyên Lý Vận Hành Của Tháp Giải Nhiệt Nước Tuần Hoàn</a></h2>
+        <p>Nhiều kỹ sư vận hành nhà xưởng thường thắc mắc: Cơ chế nào giúp tháp giải nhiệt nước có thể làm mát hàng chục mét khối nước mỗi giờ mà vẫn tiết kiệm điện năng? ...</p>
+        <div class="card-footer">
+            <a class="read-more" href="nguyen-ly-van-hanh-cua-thap-giai-nhiet-nuoc-tuan-hoan.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #03</div>
+        <h2><a href="so-sanh-thap-giai-nhiet-dang-tron-va-dang-vuong.html">So Sánh Tháp Giải Nhiệt Dạng Tròn Và Dạng Vuông</a></h2>
+        <p>Trên thị trường hiện nay, các dòng tháp giải nhiệt công nghiệp chủ yếu được chia thành hai kiểu dáng: tháp tròn và tháp vuông. Tùy thuộc vào quy mô xưởng và khô...</p>
+        <div class="card-footer">
+            <a class="read-more" href="so-sanh-thap-giai-nhiet-dang-tron-va-dang-vuong.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #04</div>
+        <h2><a href="cap-nhat-bao-gia-thap-giai-nhiet-nuoc-cong-nghiep.html">Cập Nhật Báo Giá Tháp Giải Nhiệt Nước Công Nghiệp</a></h2>
+        <p>Dự toán ngân sách lắp đặt hệ thống giải nhiệt làm mát luôn là mối quan tâm hàng đầu của chủ doanh nghiệp. Dưới đây là mặt bằng giá tham khảo để bạn dễ dàng nắm ...</p>
+        <div class="card-footer">
+            <a class="read-more" href="cap-nhat-bao-gia-thap-giai-nhiet-nuoc-cong-nghiep.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #05</div>
+        <h2><a href="huong-dan-tinh-chon-cong-suat-rt-cho-thap-giai-nhiet.html">Hướng Dẫn Tính Chọn Công Suất (RT) Cho Tháp Giải Nhiệt</a></h2>
+        <p>Chọn tháp giải nhiệt non công suất sẽ khiến máy móc bị quá nhiệt và dừng đột ngột; ngược lại chọn quá dư thừa sẽ gây lãng phí chi phí đầu tư. Để thiết kế một hệ...</p>
+        <div class="card-footer">
+            <a class="read-more" href="huong-dan-tinh-chon-cong-suat-rt-cho-thap-giai-nhiet.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #06</div>
+        <h2><a href="danh-gia-uu-diem-thap-giai-nhiet-alpha-va-thuan-tien-phat.html">Đánh Giá Ưu Điểm Tháp Giải Nhiệt Alpha Và Thuận Tiến Phát</a></h2>
+        <p>Khi tìm mua thiết bị làm mát nước công nghiệp tại Việt Nam, hai cái tên phổ biến và được tin dùng hàng đầu hiện nay chính là dòng tháp giải nhiệt Alpha và Thuận...</p>
+        <div class="card-footer">
+            <a class="read-more" href="danh-gia-uu-diem-thap-giai-nhiet-alpha-va-thuan-tien-phat.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #07</div>
+        <h2><a href="quy-trinh-5-buoc-ve-sinh-va-bao-tri-thap-giai-nhiet-dinh-ky.html">Quy Trình 5 Bước Vệ Sinh Và Bảo Trì Tháp Giải Nhiệt Định Kỳ</a></h2>
+        <p>Sau 6 - 12 tháng vận hành liên tục, bề mặt tấm tản nhiệt và đáy bồn tháp thường đóng rêu mốc, cặn vôi canxi. Tình trạng này làm giảm nghiêm trọng hiệu suất trao...</p>
+        <div class="card-footer">
+            <a class="read-more" href="quy-trinh-5-buoc-ve-sinh-va-bao-tri-thap-giai-nhiet-dinh-ky.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #08</div>
+        <h2><a href="diem-danh-4-linh-kien-thap-giai-nhiet-can-thay-the-dinh-ky.html">Điểm Danh 4 Linh Kiện Tháp Giải Nhiệt Cần Thay Thế Định Kỳ</a></h2>
+        <p>Một tháp giải nhiệt có tuổi thọ vỏ ngoài lên đến 10 - 15 năm, nhưng các phụ tùng bên trong chịu ma sát và hóa chất nước liên tục sẽ bị hao mòn theo thời gian. V...</p>
+        <div class="card-footer">
+            <a class="read-more" href="diem-danh-4-linh-kien-thap-giai-nhiet-can-thay-the-dinh-ky.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #09</div>
+        <h2><a href="vi-sao-doanh-nghiep-san-xuat-can-trang-bi-thap-giai-nhiet.html">Vì Sao Doanh Nghiệp Sản Xuất Cần Trang Bị Tháp Giải Nhiệt?</a></h2>
+        <p>Trong dây chuyền sản xuất công nghiệp, nhiệt độ là kẻ thù số một của năng suất và chất lượng thành phẩm. Việc quyết định mua tháp giải nhiệt đúng tiêu chuẩn man...</p>
+        <div class="card-footer">
+            <a class="read-more" href="vi-sao-doanh-nghiep-san-xuat-can-trang-bi-thap-giai-nhiet.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #10</div>
+        <h2><a href="dia-chi-cung-cap-thap-giai-nhiet-nuoc-chinh-hang-uy-tin.html">Địa Chỉ Cung Cấp Tháp Giải Nhiệt Nước Chính Hãng Uy Tín</a></h2>
+        <p>Để đảm bảo tháp giải nhiệt hoạt động ổn định và có đầy đủ phụ tùng bảo hành lâu dài, việc lựa chọn một nhà phân phối uy tín, am hiểu sâu về kỹ thuật cơ điện là ...</p>
+        <div class="card-footer">
+            <a class="read-more" href="dia-chi-cung-cap-thap-giai-nhiet-nuoc-chinh-hang-uy-tin.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #11</div>
+        <h2><a href="giai-phap-thap-giai-nhiet-cho-may-ep-nhua-cong-nghiep-toi-uu.html">Giải Pháp Tháp Giải Nhiệt Cho Máy Ép Nhựa Công Nghiệp Tối Ưu</a></h2>
+        <p>Trong ngành công nghiệp gia công khuôn mẫu và ép phun định hình, nhiệt lượng sinh ra từ hệ thống bơm dầu thủy lực và khuôn ép là cực kỳ lớn. Nếu không được làm ...</p>
+        <div class="card-footer">
+            <a class="read-more" href="giai-phap-thap-giai-nhiet-cho-may-ep-nhua-cong-nghiep-toi-uu.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #12</div>
+        <h2><a href="vai-tro-cua-thap-giai-nhiet-trong-he-thong-dieu-hoa-chiller-.html">Vai Trò Của Tháp Giải Nhiệt Trong Hệ Thống Điều Hòa Chiller Trung Tâm</a></h2>
+        <p>Tại các tòa nhà văn phòng, khách sạn cao cấp, trung tâm thương mại và bệnh viện, hệ thống điều hòa không khí trung tâm Water Chiller đóng vai trò là lá phổi điề...</p>
+        <div class="card-footer">
+            <a class="read-more" href="vai-tro-cua-thap-giai-nhiet-trong-he-thong-dieu-hoa-chiller-.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #13</div>
+        <h2><a href="tim-hieu-cac-loai-tam-tan-nhiet-filling-thap-giai-nhiet-pvc-.html">Tìm Hiểu Các Loại Tấm Tản Nhiệt Filling Tháp Giải Nhiệt PVC Và PP</a></h2>
+        <p>Trong cấu trúc vận hành của tháp hạ nhiệt nước, tấm tản nhiệt (Filling tản nhiệt / Màng giải nhiệt) chiếm đến 70% hiệu quả trao đổi nhiệt thực tế. Việc lựa chọn...</p>
+        <div class="card-footer">
+            <a class="read-more" href="tim-hieu-cac-loai-tam-tan-nhiet-filling-thap-giai-nhiet-pvc-.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #14</div>
+        <h2><a href="co-che-hoat-dong-cua-dau-phun-va-canh-quat-hut-gio-thap-giai.html">Cơ Chế Hoạt Động Của Đầu Phun Và Cánh Quạt Hút Gió Tháp Giải Nhiệt</a></h2>
+        <p>Hai bộ phận cơ khí chủ lực tạo nên sự luân chuyển nước và không khí trong tháp chính là đầu phun chia nước tự động và cánh quạt hút gió cưỡng bức. Việc nắm rõ n...</p>
+        <div class="card-footer">
+            <a class="read-more" href="co-che-hoat-dong-cua-dau-phun-va-canh-quat-hut-gio-thap-giai.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #15</div>
+        <h2><a href="phuong-phap-xu-ly-nuoc-thap-giai-nhiet-chong-dong-can-canxi-.html">Phương Pháp Xử Lý Nước Tháp Giải Nhiệt Chống Đóng Cặn Canxi Và Rong Rêu</a></h2>
+        <p>Nước trong quá trình bay hơi giải nhiệt sẽ để lại các khoáng chất hòa tan (như ion Ca2+, Mg2+, Silica) tích tụ ngày càng đậm đặc trong bồn chứa. Nếu không có bi...</p>
+        <div class="card-footer">
+            <a class="read-more" href="phuong-phap-xu-ly-nuoc-thap-giai-nhiet-chong-dong-can-canxi-.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #16</div>
+        <h2><a href="tieu-chuan-chon-vi-tri-lap-dat-thap-giai-nhiet-tren-mai-va-m.html">Tiêu Chuẩn Chọn Vị Trí Lắp Đặt Tháp Giải Nhiệt Trên Mái Và Mặt Đất</a></h2>
+        <p>Vị trí đặt tháp làm mát đóng vai trò quyết định đến khả năng lưu thông gió tươi và hiệu suất tản nhiệt thực tế. Nếu đặt ở nơi góc khuất hoặc gần nguồn nhiệt khá...</p>
+        <div class="card-footer">
+            <a class="read-more" href="tieu-chuan-chon-vi-tri-lap-dat-thap-giai-nhiet-tren-mai-va-m.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #17</div>
+        <h2><a href="cac-bien-phap-giam-tieng-on-cho-thap-giai-nhiet-gan-khu-dan-.html">Các Biện Pháp Giảm Tiếng Ồn Cho Tháp Giải Nhiệt Gần Khu Dân Cư</a></h2>
+        <p>Đối với các cơ sở sản xuất, trung tâm thương mại hoặc bệnh viện nằm gần khu dân cư đông đúc, tiếng ồn phát ra từ tháp làm mát là nguyên nhân hàng đầu dẫn đến kh...</p>
+        <div class="card-footer">
+            <a class="read-more" href="cac-bien-phap-giam-tieng-on-cho-thap-giai-nhiet-gan-khu-dan-.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #18</div>
+        <h2><a href="5-su-co-thuong-gap-o-thap-giai-nhiet-va-cach-khac-phuc-nhanh.html">5 Sự Cố Thường Gặp Ở Tháp Giải Nhiệt Và Cách Khắc Phục Nhanh Chóng</a></h2>
+        <p>Trong quá trình vận hành liên tục 24/7 dưới điều kiện thời tiết nắng mưa khắc nghiệt, tháp giải nhiệt khó tránh khỏi các trục trặc cơ học và thủy lực. Việc nắm ...</p>
+        <div class="card-footer">
+            <a class="read-more" href="5-su-co-thuong-gap-o-thap-giai-nhiet-va-cach-khac-phuc-nhanh.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #19</div>
+        <h2><a href="so-sanh-thap-giai-nhiet-mach-kin-va-mach-ho-chi-tiet-nhat.html">So Sánh Tháp Giải Nhiệt Mạch Kín Và Mạch Hở Chi Tiết Nhất</a></h2>
+        <p>Khi lựa chọn thiết bị làm mát cho các thiết bị công nghệ cao đòi hỏi độ tinh khiết tuyệt đối của dòng nước, câu hỏi đặt ra là nên chọn tháp giải nhiệt kín hay h...</p>
+        <div class="card-footer">
+            <a class="read-more" href="so-sanh-thap-giai-nhiet-mach-kin-va-mach-ho-chi-tiet-nhat.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #20</div>
+        <h2><a href="giai-phap-tiet-kiem-dien-nang-cho-dong-co-thap-giai-nhiet-ba.html">Giải Pháp Tiết Kiệm Điện Năng Cho Động Cơ Tháp Giải Nhiệt Bằng Biến Tần</a></h2>
+        <p>Chi phí điện năng tiêu thụ của động cơ cánh quạt tháp giải nhiệt và máy bơm tuần hoàn chiếm một tỷ trọng đáng kể trong hóa đơn tiền điện hàng tháng của nhà máy....</p>
+        <div class="card-footer">
+            <a class="read-more" href="giai-phap-tiet-kiem-dien-nang-cho-dong-co-thap-giai-nhiet-ba.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #21</div>
+        <h2><a href="ung-dung-thap-giai-nhiet-trong-nganh-luyen-kim-va-duc-nhom-d.html">Ứng Dụng Tháp Giải Nhiệt Trong Ngành Luyện Kim Và Đúc Nhôm Đồng</a></h2>
+        <p>Ngành công nghiệp luyện cán thép, đúc nhôm, đồng và xi mạ kim loại luôn là môi trường vận hành khắc nghiệt với mức nhiệt lượng tỏa ra cực kỳ khủng khiếp từ các ...</p>
+        <div class="card-footer">
+            <a class="read-more" href="ung-dung-thap-giai-nhiet-trong-nganh-luyen-kim-va-duc-nhom-d.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #22</div>
+        <h2><a href="ung-dung-thap-giai-nhiet-trong-nha-may-bia-sua-va-che-bien-t.html">Ứng Dụng Tháp Giải Nhiệt Trong Nhà Máy Bia Sữa Và Chế Biến Thực Phẩm</a></h2>
+        <p>Trong quy trình sản xuất thực phẩm đóng hộp, nhà máy bia, nước giải khát và sữa tiệt trùng, việc kiểm soát nhiệt độ thanh trùng và làm lạnh nhanh đóng vai trò s...</p>
+        <div class="card-footer">
+            <a class="read-more" href="ung-dung-thap-giai-nhiet-trong-nha-may-bia-sua-va-che-bien-t.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #23</div>
+        <h2><a href="uu-diem-cua-soi-thuy-tinh-composite-frp-trong-san-xuat-thap-.html">Ưu Điểm Của Sợi Thủy Tinh Composite FRP Trong Sản Xuất Tháp Giải Nhiệt</a></h2>
+        <p>Nếu như trước đây các công trình làm mát công nghiệp thường sử dụng bê tông cốt thép hoặc tôn kim loại nặng nề và dễ bị rỉ sét, thì sự ra đời của vật liệu compo...</p>
+        <div class="card-footer">
+            <a class="read-more" href="uu-diem-cua-soi-thuy-tinh-composite-frp-trong-san-xuat-thap-.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #24</div>
+        <h2><a href="huong-dan-tinh-toan-luu-luong-nuoc-va-chon-bom-tuan-hoan-tha.html">Hướng Dẫn Tính Toán Lưu Lượng Nước Và Chọn Bơm Tuần Hoàn Tháp Giải Nhiệt</a></h2>
+        <p>Một hệ thống giải nhiệt làm mát chỉ có thể đạt được hiệu suất tối đa khi máy bơm tuần hoàn và tháp tản nhiệt có sự đồng bộ tuyệt đối về lưu lượng và cột áp. Việ...</p>
+        <div class="card-footer">
+            <a class="read-more" href="huong-dan-tinh-toan-luu-luong-nuoc-va-chon-bom-tuan-hoan-tha.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #25</div>
+        <h2><a href="co-nen-mua-thap-giai-nhiet-cu-thanh-ly-nhung-rui-ro-tiem-an.html">Có Nên Mua Tháp Giải Nhiệt Cũ Thanh Lý? Những Rủi Ro Tiềm Ẩn</a></h2>
+        <p>Để tiết kiệm chi phí đầu tư ban đầu, không ít chủ xưởng sản xuất đã tìm đến các chợ đồ cũ hoặc kho thanh lý máy móc cơ điện để tìm mua thiết bị giải nhiệt đã qu...</p>
+        <div class="card-footer">
+            <a class="read-more" href="co-nen-mua-thap-giai-nhiet-cu-thanh-ly-nhung-rui-ro-tiem-an.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #26</div>
+        <h2><a href="huong-dan-tu-thay-the-khoi-dem-tan-nhiet-filling-dung-ky-thu.html">Hướng Dẫn Tự Thay Thế Khối Đệm Tản Nhiệt Filling Đúng Kỹ Thuật</a></h2>
+        <p>Sau nhiều năm phục vụ, màng tản nhiệt bị đóng cặn canxi dày đặc và gãy mục là lúc bắt buộc phải thay thế để khôi phục công suất làm mát. Thực hiện quy trình tha...</p>
+        <div class="card-footer">
+            <a class="read-more" href="huong-dan-tu-thay-the-khoi-dem-tan-nhiet-filling-dung-ky-thu.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #27</div>
+        <h2><a href="tam-quan-trong-cua-nhiet-do-bau-uot-wet-bulb-khi-chon-mua-th.html">Tầm Quan Trọng Của Nhiệt Độ Bầu Ướt Wet Bulb Khi Chọn Mua Tháp Giải Nhiệt</a></h2>
+        <p>Nhiều khách hàng thường lầm tưởng rằng tháp làm mát có thể hạ nhiệt độ nước xuống bất kỳ mức nào mong muốn. Tuy nhiên, về mặt nhiệt động lực học, giới hạn thấp ...</p>
+        <div class="card-footer">
+            <a class="read-more" href="tam-quan-trong-cua-nhiet-do-bau-uot-wet-bulb-khi-chon-mua-th.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #28</div>
+        <h2><a href="danh-gia-dong-thap-giai-nhiet-tashin-nhap-khau-dai-loan-chin.html">Đánh Giá Dòng Tháp Giải Nhiệt Tashin Nhập Khẩu Đài Loan Chính Hãng</a></h2>
+        <p>Bên cạnh các thương hiệu sản xuất nội địa, dòng tháp giải nhiệt Tashin (Đài Loan) từ lâu đã khẳng định được vị thế vững chắc trong các dự án công nghiệp nặng nh...</p>
+        <div class="card-footer">
+            <a class="read-more" href="danh-gia-dong-thap-giai-nhiet-tashin-nhap-khau-dai-loan-chin.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #29</div>
+        <h2><a href="quy-trinh-nghiem-thu-va-ban-giao-lap-dat-he-thong-thap-giai-.html">Quy Trình Nghiệm Thu Và Bàn Giao Lắp Đặt Hệ Thống Tháp Giải Nhiệt</a></h2>
+        <p>Sau khi hoàn tất công tác lắp đặt cơ khí và kết nối đường ống thủy lực, giai đoạn nghiệm thu chạy thử đóng vai trò quyết định để đảm bảo hệ thống vận hành an to...</p>
+        <div class="card-footer">
+            <a class="read-more" href="quy-trinh-nghiem-thu-va-ban-giao-lap-dat-he-thong-thap-giai-.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+    <article class="card">
+        <div class="card-badge">Chuyên mục #30</div>
+        <h2><a href="tong-kho-phan-phoi-thap-giai-nhiet-va-phu-tung-chinh-hang-to.html">Tổng Kho Phân Phối Tháp Giải Nhiệt Và Phụ Tùng Chính Hãng Toàn Quốc</a></h2>
+        <p>Một hệ thống làm mát công nghiệp muốn vận hành ổn định suốt 15 - 20 năm cần được cung cấp bởi một đối tác phân phối có tiềm lực kho bãi vững vàng và đội ngũ kỹ ...</p>
+        <div class="card-footer">
+            <a class="read-more" href="tong-kho-phan-phoi-thap-giai-nhiet-va-phu-tung-chinh-hang-to.html">Đọc chi tiết &rarr;</a>
+        </div>
+    </article>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Bản quyền tài liệu thuộc về <a href="https://congnghieptot.vn/" rel="dofollow">Công Nghiệp Tốt</a> &bull; Đơn vị phân phối hàng đầu về <a href="https://congnghieptot.vn/thap-giai-nhiet" rel="dofollow">tháp giải nhiệt nước công nghiệp</a> tại Việt Nam.</p>
+    </footer>
+</body>
+</html>
